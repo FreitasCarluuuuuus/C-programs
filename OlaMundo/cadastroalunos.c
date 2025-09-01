@@ -11,10 +11,8 @@ int main (){
     scanf("%d", &idade);
     printf("Digite a altura do aluno: \n");
     scanf("%f", &altura);
-    printf("Digite a matricula do aluno: \n");
-    scanf("%d", &matricula);
 
-    printf("Nome: %s - Matricula: %d\n", nome, matricula);
+    printf("Nome: %s\n", nome);
     printf("Idade: %d\n", idade);
     printf("Altura: %.2f\n", altura);
 
