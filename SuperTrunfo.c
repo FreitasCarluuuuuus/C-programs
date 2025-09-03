@@ -10,7 +10,8 @@ int main() {
     float Area1, Area2; // Área da cidade
     float Pib1, Pib2; // PIB da cidade
     int N_Pontos_Turisticos1, N_Pontos_Turisticos2; // Número de pontos turísticos
-
+    float PIBPerCapita1, PIBPerCapita2; // PIB per capita
+    float DensidadePopulacional1, DensidadePopulacional2; // Densidade populacional
     printf("Bem vindo ao Super Trunfo, hoje veremos quem saira vencedor, qual de voces tem a carta mais forte?\n" 
         "Para isso vamos comecar listando as informacoes de cada carta!\n");
         printf("Digite o nome do Estado: \n"); // Pede ao usuário o nome do estado
@@ -43,6 +44,11 @@ int main() {
             scanf("%f", &Pib2); // Salva o PIB da cidade
         printf("Digite o numero de pontos turísticos: \n");
             scanf("%d", &N_Pontos_Turisticos2); // Salva o número de pontos turísticos
+        PIBPerCapita1 = Pib1 * 1e9 / Populacao1;
+        PIBPerCapita2 = Pib2 * 1e9 / Populacao2;
+        DensidadePopulacional1 = Populacao1 / Area1;
+        DensidadePopulacional2 = Populacao2 / Area2;
+
     printf("\n"); // Adiona um slato de linha para melhor legibilidade do resultado das cartas
     printf("Agora vamos comparar as cartas!\n");
     printf("\n");
@@ -52,9 +58,11 @@ int main() {
         "Nome da Cidade: %s\n"
         "Populacao: %d\n"
         "Area: %.2f km²\n"
+        "Densidade Populacional: %.2f habitantes/km²\n"
         "PIB: %.2f Bilhoes de reais\n"
+        "PIB Per Capita: %.2f reais\n"
         "Numero de Pontos Turisticos: %d\n",
-        Estado1, CodigoCarta1, NomeCidade1, Populacao1, Area1, Pib1, N_Pontos_Turisticos1); // aqui vamos printar o resultado da carta 1, colocando um salto de linha a cada caracteristica mencionada da carta
+        Estado1, CodigoCarta1, NomeCidade1, Populacao1, Area1, DensidadePopulacional1, Pib1, PIBPerCapita1, N_Pontos_Turisticos1); // aqui vamos printar o resultado da carta 1, colocando um salto de linha a cada caracteristica mencionada da carta
     printf("\n"); 
     printf("Carta 2:\n"
         "Estado: %s\n"
@@ -62,8 +70,10 @@ int main() {
         "Nome da Cidade: %s\n"
         "Populacao: %d\n"
         "Area: %.2f km²\n"
+        "Densidade Populacional: %.2f habitantes/km²\n"
         "PIB: %.2f Bilhoes de reais\n"
+        "PIB Per Capita: %.2f reais\n"
         "Numero de Pontos Turisticos: %d\n",
-        Estado2, CodigoCarta2, NomeCidade2, Populacao2, Area2, Pib2, N_Pontos_Turisticos2); // faremos o mesmo com a carta 2, veja que os parâmetros diferem apenas no número 2, referindo-se a segunda carta
+        Estado2, CodigoCarta2, NomeCidade2, Populacao2, Area2, DensidadePopulacional2, Pib2, PIBPerCapita2, N_Pontos_Turisticos2); // faremos o mesmo com a carta 2, veja que os parâmetros diferem apenas no número 2, referindo-se a segunda carta
     return 0;
 }
