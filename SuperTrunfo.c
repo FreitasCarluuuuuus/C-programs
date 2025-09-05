@@ -79,7 +79,9 @@ int main() {
         "Numero de Pontos Turisticos: %d\n"
         "Super Poder: %.4f\n",
         Estado2, CodigoCarta2, NomeCidade2, Populacao2, Area2, DensidadePopulacional2, Pib2, PIBPerCapita2, N_Pontos_Turisticos2, SuperPoder2); // faremos o mesmo com a carta 2, veja que os parâmetros diferem apenas no número 2, referindo-se a segunda carta
+    printf("\n");
     printf("Feito isso, vamos comparar as cartas e ver qual a vencedora!\n"); // Aqui vamos comparar as cartas e ver qual a vencedora
+    printf("\n");
     printf("Comparativo de Populacao\n");
     if (Populacao1 > Populacao2) {
         printf("Carta 1 - %s (%s): %d (%d)\n"
