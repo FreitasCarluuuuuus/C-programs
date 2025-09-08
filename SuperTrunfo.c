@@ -14,6 +14,8 @@ int main() {
     float DensidadePopulacional1, DensidadePopulacional2; // Densidade populacional
     float SuperPoder1, SuperPoder2; // Super poder 
     int escolha; // Variável para a escolha do usuário
+    int atributo1Escolhido; // Variável para o atributo escolhido
+    int atributo2Escolhido; // Variável para o atributo escolhido
     printf("Bem vindo ao Super Trunfo, hoje veremos quem saira vencedor, qual de voces tem a carta mais forte?\n" 
         "Para isso vamos comecar listando as informacoes de cada carta!\n");
         printf("Digite o nome do Estado: \n"); // Pede ao usuário o nome do estado
@@ -92,6 +94,7 @@ int main() {
     printf("4 - PIB\n");
     printf("5 - Numero de Pontos Turisticos\n");
     printf("6 - Densidade Populacional\n");
+    printf("7 - Comparar dois atributos de sua escolha\n");
     printf("0 - Sair do menu\n");
     printf("Digite o numero correspondente a sua escolha: ");
     scanf("%d", &escolha);
@@ -294,11 +297,343 @@ int main() {
                 }
             }
                 break;
-        case 0:
-            printf("Saindo do menu. Obrigado por jogar!\n");
-            rodando = 0; // Encerra o loop
+        case 7: 
+        {
+            printf("\n");
+            printf("Escolha quais atributos deseja comparar:\n");
+            printf("1 - Populacao\n");
+            printf("2 - Area\n");
+            printf("3 - PIB\n");
+            printf("4 - Numero de Pontos Turisticos\n");
+            scanf("%d", &atributo1Escolhido);
+            printf("Agora escolha o segundo atributo:\n");
+            switch (atributo1Escolhido) {
+            case 1:
+            int resultado1;
+            int resultado2;
+            int resultado3;
+            float somaatributos1;
+            float somaatributos2;
+                printf("2 - Area\n");
+                printf("3 - PIB\n");
+                printf("4 - Numero de Pontos Turisticos\n");
+                scanf("%d", &atributo2Escolhido);
+                resultado1 = Populacao1 > Populacao2? 1 : 0;
+                Populacao1 > Populacao2 ? printf("Carta 1 (%s) Venceu na Populacao!\n"
+                    "Populacao da cidade %s = %d\n"
+                    "Populacao da cidade %s = %d\n", NomeCidade1, NomeCidade1, Populacao1, NomeCidade2, Populacao2) : printf("Carta 2 (%s) Venceu na Populacao!\n"
+                    "Populacao da cidade %s = %d\n"
+                    "Populacao da cidade %s = %d\n", NomeCidade2, NomeCidade2, Populacao2, NomeCidade1, Populacao1);
+                if (atributo2Escolhido == 2) {
+                    resultado2 = Area1 > Area2 ? 1 : 0;
+                    somaatributos1 = (float)(Populacao1 + Area1);
+                    somaatributos2 = (float)(Populacao2 + Area2);
+                    Area1 > Area2 ? printf("Carta 1 (%s) Venceu na Area!\n"
+                    "Area da cidade %s = %.2f\n"
+                    "Area da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Area1, NomeCidade2, Area2) : printf("Carta 2 (%s) Venceu na Area!\n"
+                    "Area da cidade %s = %.2f\n"
+                    "Area da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Area2, NomeCidade1, Area1);
+                    resultado3 = (Populacao1 + Area1 > Populacao2 + Area2) ? 1 : 0;
+                    (Populacao1 + Area1) > (Populacao2 + Area2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, Populacao1, Area1, NomeCidade2, somaatributos1) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, Populacao2, Area2, NomeCidade1, somaatributos2);
+                        if ((Populacao1 == Populacao2) && (Area1 == Area2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n", NomeCidade1);
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                } else if (atributo2Escolhido == 3) {
+                    resultado2 = Pib1 > Pib2 ? 1 : 0;
+                    somaatributos1 = (float)(Populacao1 + Pib1);
+                    somaatributos2 = (float)(Populacao2 + Pib2);
+                    Area1 > Area2 ? printf("Carta 1 (%s) Venceu na Area!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Pib1, NomeCidade2, Pib2) : printf("Carta 2 (%s) Venceu na Area!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Pib2, NomeCidade1, Pib1);
+                    resultado3 = (Populacao1 + Pib1 > Populacao2 + Pib2) ? 1 : 0;
+                    (Populacao1 + Pib1) > (Populacao2 + Pib2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, Populacao1, Pib1, NomeCidade2, somaatributos1) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, Populacao2, Pib2, NomeCidade1, somaatributos2);
+                        if ((Populacao1 == Populacao2) && (Pib1 == Pib2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                } else if (atributo2Escolhido == 4) {
+                    resultado2 = N_Pontos_Turisticos1 > N_Pontos_Turisticos2 ? 1 : 0;
+                    somaatributos1 = (float)(N_Pontos_Turisticos1 + N_Pontos_Turisticos2);
+                    somaatributos2 = (float)(N_Pontos_Turisticos2 + N_Pontos_Turisticos1);
+                    N_Pontos_Turisticos1 > N_Pontos_Turisticos2 ? printf("Carta 1 (%s) Venceu em Pontos Turísticos!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, N_Pontos_Turisticos1, NomeCidade2, N_Pontos_Turisticos2) : printf("Carta 2 (%s) Venceu em Pontos Turísticos!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, N_Pontos_Turisticos2, NomeCidade1, N_Pontos_Turisticos1);
+                    resultado3 = (Populacao1 + Pib1 > Populacao2 + Pib2) ? 1 : 0;
+                    (Populacao1 + Pib1) > (Populacao2 + Pib2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, Populacao1, N_Pontos_Turisticos1, NomeCidade2, somaatributos1) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, Populacao2, N_Pontos_Turisticos2, NomeCidade1, somaatributos2);
+                        if ((Populacao1 == Populacao2) && (N_Pontos_Turisticos1 == N_Pontos_Turisticos2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                }
+                printf("\n");
+                printf("Deseja retornar ao menu?\n"
+                    "(1 - Sim \n"
+                    " 0 - Nao):");
+                scanf("%d", &continuar);
+                if (continuar == 0) {
+                    printf("Saindo do jogo...\n");
+                    rodando = 0; // Encerra o loop
+                }
                 break;
-    }
+            case 2:
+                printf("1 - Populacao\n");
+                printf("3 - PIB\n");
+                printf("4 - Numero de Pontos Turisticos\n");
+                scanf("%d", &atributo2Escolhido);
+                resultado1 = Area1 > Area2 ? 1 : 0;
+                somaatributos1 = (float)(Area1 + Area2);
+                Area1 > Area2 ? printf("Carta 1 (%s) Venceu na Area!\n"
+                    "Area da cidade %s = %.2f\n"
+                    "Area da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Area1, NomeCidade2, Area2) : printf("Carta 2 (%s) Venceu na Area!\n"
+                    "Area da cidade %s = %.2f\n"
+                    "Area da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Area2, NomeCidade1, Area1);
+                    if (atributo2Escolhido == 1) {
+                    resultado2 = Populacao1 > Populacao2 ? 1 : 0;
+                    somaatributos2 = (float)(Populacao2 + Populacao1);
+                    Populacao1 > Populacao2 ? printf("Carta 1 (%s) Venceu em Pontos Turísticos!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Populacao1, NomeCidade2, Populacao2) : printf("Carta 2 (%s) Venceu em Pontos Turísticos!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Populacao2, NomeCidade1, Populacao1);
+                    resultado3 = (Populacao1 + Area1 > Populacao2 + Area2) ? 1 : 0;
+                    (Populacao1 + Area2) > (Populacao2 + Area1) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, Area1, Populacao1, NomeCidade2, somaatributos1) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, Area2, Populacao2, NomeCidade1, somaatributos2);
+                        if ((Area1 == Area2) && (Populacao1 == Populacao2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                     } else if (atributo2Escolhido == 3) {
+                        resultado2 = Pib1 > Pib2 ? 1 : 0;
+                        somaatributos2 = (float)(Pib1 + Pib2);
+                    Pib1 > Pib2 ? printf("Carta 1 (%s) Venceu no PIB!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Pib1, NomeCidade2, Pib2) : printf("Carta 2 (%s) Venceu no PIB!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Pib2, NomeCidade1, Pib1);
+                    resultado3 = (Area1 + Pib1 > Area2 + Pib2) ? 1 : 0;
+                    (Area1 + Pib2) > (Area1 + Pib1) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, Pib1, Area1, NomeCidade2, somaatributos1) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, Pib2, Area2, NomeCidade1, somaatributos2);
+                        if ((Pib1 == Pib2) && (Area1 == Area2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                } else if (atributo2Escolhido == 4) {
+                    resultado2 = N_Pontos_Turisticos1 > N_Pontos_Turisticos2 ? 1 : 0;
+                    somaatributos2 = (int)N_Pontos_Turisticos1 + N_Pontos_Turisticos2;
+                    N_Pontos_Turisticos1 > N_Pontos_Turisticos2 ? printf("Carta 1 (%s) Venceu no Numero de Pontos Turisticos!\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n", NomeCidade1, NomeCidade1, N_Pontos_Turisticos1, NomeCidade2, N_Pontos_Turisticos2) : printf("Carta 2 (%s) Venceu no Numero de Pontos Turisticos!\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n", NomeCidade2, NomeCidade2, N_Pontos_Turisticos2, NomeCidade1, N_Pontos_Turisticos1);
+                    resultado3 = (Area1 + N_Pontos_Turisticos1 > Area2 + N_Pontos_Turisticos2) ? 1 : 0;
+                    (Area1 + N_Pontos_Turisticos1) > (Area2 + N_Pontos_Turisticos2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, somaatributos1, NomeCidade2, somaatributos2) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, somaatributos2, NomeCidade1, somaatributos1);
+                        if ((N_Pontos_Turisticos1 == N_Pontos_Turisticos2) && (Area1 == Area2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                }
+                    printf("\n");
+                printf("Deseja retornar ao menu?\n"
+                    "(1 - Sim \n"
+                    " 0 - Nao):");
+                scanf("%d", &continuar);
+                if (continuar == 0) {
+                    printf("Saindo do jogo...\n");
+                    rodando = 0; // Encerra o loop
+                }
+                break;
+            case 3:
+                printf("1 - Populacao\n");
+                printf("2 - Area\n");
+                printf("4 - Numero de Pontos Turisticos\n");
+                scanf("%d", &atributo2Escolhido);
+                resultado1 = Pib1 > Pib2 ? 1 : 0;
+                somaatributos1 = (float)(Pib1 + Pib2);
+                Pib1 > Pib2 ? printf("Carta 1 (%s) Venceu no PIB!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Pib1, NomeCidade2, Pib2) : printf("Carta 2 (%s) Venceu no PIB!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Pib2, NomeCidade1, Pib1);
+                    if (atributo2Escolhido == 1) {
+                        resultado2 = Populacao1 > Populacao2 ? 1 : 0;
+                        somaatributos2 = (float)(Populacao1 + Populacao2);
+                    Populacao1 > Populacao2 ? printf("Carta 1 (%s) Venceu na Populacao!\n"
+                    "Populacao da cidade %s = %d\n"
+                    "Populacao da cidade %s = %d\n", NomeCidade1, NomeCidade1, Populacao1, NomeCidade2, Populacao2) : printf("Carta 2 (%s) Venceu na Populacao!\n"
+                    "Populacao da cidade %s = %d\n"
+                    "Populacao da cidade %s = %d\n", NomeCidade2, NomeCidade2, Populacao2, NomeCidade1, Populacao1);
+                    resultado3 = (Pib1 + Populacao1 > Pib2 + Populacao2) ? 1 : 0;
+                    (Pib1 + Populacao1) > (Pib2 + Populacao2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, somaatributos1, NomeCidade2, somaatributos2) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, somaatributos2, NomeCidade1, somaatributos1);
+                        if ((Populacao1 == Populacao2) && (Pib1 == Pib2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                } else if (atributo2Escolhido == 2) {
+                    Area1 > Area2 ? printf("Carta 1 (%s) Venceu na Area!\n"
+                    "Area da cidade %s = %.2f\n"
+                    "Area da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Area1, NomeCidade2, Area2) : printf("Carta 2 (%s) Venceu na Area!\n"
+                    "Area da cidade %s = %.2f\n"
+                    "Area da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Area2, NomeCidade1, Area1);
+                    resultado3 = (Pib1 + Area1 > Pib2 + Area2) ? 1 : 0;
+                    somaatributos2 = (float)(Pib2 + Area2);
+                    resultado2 = Area1 > Area2 ? 1 : 0;
+                    (Pib1 + Area1) > (Pib2 + Area2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, somaatributos1, NomeCidade2, somaatributos2) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, somaatributos2, NomeCidade1, somaatributos1);
+                        if ((Area1 == Area2) && (Pib1 == Pib2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                } else if (atributo2Escolhido == 4) {
+                    N_Pontos_Turisticos1 > N_Pontos_Turisticos2 ? printf("Carta 1 (%s) Venceu no Numero de Pontos Turisticos!\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n", NomeCidade1, NomeCidade1, N_Pontos_Turisticos1, NomeCidade2, N_Pontos_Turisticos2) : printf("Carta 2 (%s) Venceu no Numero de Pontos Turisticos!\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n", NomeCidade2, NomeCidade2, N_Pontos_Turisticos2, NomeCidade1, N_Pontos_Turisticos1);
+                    resultado3 = (Pib1 + N_Pontos_Turisticos1 > Pib2 + N_Pontos_Turisticos2) ? 1 : 0;
+                    somaatributos2 = (float)(Pib2 + N_Pontos_Turisticos2);
+                    resultado2 = N_Pontos_Turisticos1 > N_Pontos_Turisticos2 ? 1 : 0;
+                    (Pib1 + N_Pontos_Turisticos1) > (Pib2 + N_Pontos_Turisticos2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, somaatributos1, NomeCidade2, somaatributos2) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, somaatributos2, NomeCidade1, somaatributos1);
+                        if ((N_Pontos_Turisticos1 == N_Pontos_Turisticos2) && (Pib1 == Pib2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                }
+                    printf("\n");
+                printf("Deseja retornar ao menu?\n"
+                    "(1 - Sim \n"
+                    " 0 - Nao):");
+                scanf("%d", &continuar);
+                if (continuar == 0) {
+                    printf("Saindo do jogo...\n");
+                    rodando = 0; // Encerra o loop
+                }
+                break;
+            case 4:
+                printf("1 - Populacao\n");
+                printf("2 - Area\n");
+                printf("3 - PIB\n");
+                scanf("%d", &atributo2Escolhido);
+                resultado1 = N_Pontos_Turisticos1 > N_Pontos_Turisticos2 ? 1 : 0;
+                somaatributos1 = (float)(N_Pontos_Turisticos1 + N_Pontos_Turisticos2);
+                N_Pontos_Turisticos1 > N_Pontos_Turisticos2 ? printf("Carta 1 (%s) Venceu no Numero de Pontos Turisticos!\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n", NomeCidade1, NomeCidade1, N_Pontos_Turisticos1, NomeCidade2, N_Pontos_Turisticos2) : printf("Carta 2 (%s) Venceu no Numero de Pontos Turisticos!\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n"
+                    "Numero de Pontos Turisticos da cidade %s = %d\n", NomeCidade2, NomeCidade2, N_Pontos_Turisticos2, NomeCidade1, N_Pontos_Turisticos1);
+                    if (atributo2Escolhido == 1) {
+                    Populacao1 > Populacao2 ? printf("Carta 1 (%s) Venceu na Populacao!\n"
+                    "Populacao da cidade %s = %d\n"
+                    "Populacao da cidade %s = %d\n", NomeCidade1, NomeCidade1, Populacao1, NomeCidade2, Populacao2) : printf("Carta 2 (%s) Venceu na Populacao!\n"
+                    "Populacao da cidade %s = %d\n"
+                    "Populacao da cidade %s = %d\n", NomeCidade2, NomeCidade2, Populacao2, NomeCidade1, Populacao1);
+                    resultado3 = (N_Pontos_Turisticos1 + Populacao1 > N_Pontos_Turisticos2 + Populacao2) ? 1 : 0;
+                    resultado2 = Populacao1 > Populacao2 ? 1 : 0;
+                    somaatributos2 = (float)(N_Pontos_Turisticos2 + Populacao2);
+                    (N_Pontos_Turisticos1 + Populacao1) > (N_Pontos_Turisticos2 + Populacao2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, somaatributos1, NomeCidade2, somaatributos2) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, somaatributos2, NomeCidade1, somaatributos1);
+                        if ((Populacao1 == Populacao2) && (N_Pontos_Turisticos1 == N_Pontos_Turisticos2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                } else if (atributo2Escolhido == 2) {
+                    Area1 > Area2 ? printf("Carta 1 (%s) Venceu na Area!\n"
+                    "Area da cidade %s = %.2f\n"
+                    "Area da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Area1, NomeCidade2, Area2) : printf("Carta 2 (%s) Venceu na Area!\n"
+                    "Area da cidade %s = %.2f\n"
+                    "Area da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Area2, NomeCidade1, Area1);
+                    resultado3 = (N_Pontos_Turisticos1 + Area1 > N_Pontos_Turisticos2 + Area2) ? 1 : 0;
+                    somaatributos2 = (float)(N_Pontos_Turisticos2 + Area2);
+                    resultado2 = Area1 > Area2 ? 1 : 0;
+                    (N_Pontos_Turisticos1 + Area1) > (N_Pontos_Turisticos2 + Area2) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, somaatributos1, NomeCidade2, somaatributos2) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, somaatributos2, NomeCidade1, somaatributos1);
+                        if ((Area1 == Area2) && (N_Pontos_Turisticos1 == N_Pontos_Turisticos2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                } else if (atributo2Escolhido == 3) {
+                    Pib1 > Pib2 ? printf("Carta 1 (%s) Venceu no PIB!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Pib1, NomeCidade2, Pib2) : printf("Carta 2 (%s) Venceu no PIB!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Pib2, NomeCidade1, Pib1);}
+                    resultado2 = Pib1 > Pib2 ? 1 : 0;
+                    somaatributos2 = (float)(Pib1 + Pib2);
+                    Pib1 > Pib2 ? printf("Carta 1 (%s) Venceu no PIB!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade1, NomeCidade1, Pib1, NomeCidade2, Pib2) : printf("Carta 2 (%s) Venceu no PIB!\n"
+                    "PIB da cidade %s = %.2f\n"
+                    "PIB da cidade %s = %.2f\n", NomeCidade2, NomeCidade2, Pib2, NomeCidade1, Pib1);
+                    resultado3 = (N_Pontos_Turisticos1 + Pib1 > N_Pontos_Turisticos2 + Pib2) ? 1 : 0;
+                    (N_Pontos_Turisticos1 + Pib2) > (N_Pontos_Turisticos1 + Pib1) ? printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade1, NomeCidade1, Pib1, Area1, NomeCidade2, somaatributos1) : printf("O jogador que escolheu a carta %s VENCEU!\n" "Soma dos atributos da carta %s = %d + %.2f\n" "Soma dos atributos da carta %s = %.2f\n", NomeCidade2, NomeCidade2, Pib2, Area2, NomeCidade1, somaatributos2);
+                        if ((Pib1 == Pib2) && (N_Pontos_Turisticos1 == N_Pontos_Turisticos2) && (somaatributos1 == somaatributos2)) {
+                            printf("EMPATE!!\n");
+                        } else if ((resultado1 + resultado2 + resultado3) == 0 || (resultado1 + resultado2 + resultado3) == 1) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade2);
+                        }
+                         else if ((resultado1 + resultado2 + resultado3) == 2 || (resultado1 + resultado2 + resultado3) == 3) {
+                            printf("O jogador que escolheu a carta %s VENCEU!\n", NomeCidade1);
+                        }
+                    printf("\n");
+                printf("Deseja retornar ao menu?\n"
+                    "(1 - Sim \n"
+                    " 0 - Nao):");
+                scanf("%d", &continuar);
+                if (continuar == 0) {
+                    printf("Saindo do jogo...\n");
+                    rodando = 0; // Encerra o loop
+                }
+                }
+                break;
+            }
+            case 0:
+                printf("Saindo do menu. Obrigado por jogar!\n");
+                rodando = 0; // Encerra o loop
+                  break;
+        }
     }
     return 0;
 }
