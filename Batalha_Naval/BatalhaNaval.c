@@ -1,4 +1,22 @@
 #include <stdio.h>
+void PoderCone(int casas){
+    int escolha;
+    int casas[10][10];
+    int somaJ;
+        for (int i = 0; i<10; i++){
+            for (int j = 0; j<10; j++){
+                switch(escolha){
+                case 1: //Cima
+                    for (int k = -1; k>-4; k--){
+                        int ni = i + k;
+                        int largura = -k;
+                        for (int offset = -largura; offset <= largura; offset++)
+                        somaJ = j + offset;
+                    }
+            }
+        }
+    }
+}
 
 int main()
 {
